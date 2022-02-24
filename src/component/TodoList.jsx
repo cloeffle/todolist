@@ -1,10 +1,13 @@
 import React from 'react';
-import TodoItems from './component/TodoItems';
+import TodoItems from './TodoItems';
 
-function TodoList() {
+function TodoList({ toDo, deleteItem }) {
   return (
     <ul>
-      <></>
+      {' '}
+      {toDo.map((t) => (
+        <TodoItems deleteItem={deleteItem} toDo={t} key={t.id} />
+      ))}
     </ul>
   );
 }
@@ -12,8 +15,8 @@ function TodoList() {
 export default TodoList;
 
 /*
-- ul erstellen
-- li erstellen
-    - id vergeben
-    - text mitgeben
+- ul erstellen            CHECKED
+- li erstellen            CHECKED
+    - id vergeben         CHECKED
+    - text mitgeben       CHECKED
 */

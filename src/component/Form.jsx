@@ -1,21 +1,22 @@
 import React from 'react';
-import { v4 as uuidv4 } from 'uuid';
 
-function Form({ userInput, setUserInput, toDo, setToDo }) {
+function Form({ userInput, setUserInput, toDo, resetInput, changeInput }) {
   const userInputHandler = (e) => {
-    setUserInput(e.target.value);
+    changeInput(e);
   };
 
   const addBtnHandler = (e) => {
-    e.preventDefault();
-    setToDo([...toDo, { text: userInput, id: uuidv4() }]);
-    setUserInput('');
+    resetInput(e);
   };
 
   return (
     <form>
-      <input value={userInput} onChange={userInputHandler} type="text" />
-      <button onClick={addBtnHandler}>Add</button>
+      <input
+        value={userInput}
+        onChange={(e) => userInputHandler(e)}
+        type="text"
+      />
+      <button onClick={(e) => addBtnHandler(e)}>Add</button>
     </form>
   );
 }
